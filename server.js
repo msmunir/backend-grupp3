@@ -1,9 +1,12 @@
-const express = require('express');
-const app = express();
+const mongoose = require('mongoose');
+const app = require('./app');
 require('dotenv').config();
 
+const PORT = process.env.PORT ||  9999;
 
-const port = 2000;
+app.listen(PORT, () => console.log("Server running on: " + PORT))
+
+//Todo: need to connect the db
 
 
-app.listen(port, () => console.log("Server running on: " + port))
+
