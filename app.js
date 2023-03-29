@@ -13,6 +13,9 @@ app.use(express.json())
 
 app.use('/api/cases', require('./controllers/controller'))
 
+app.use('/api/status', require('./controllers/controller'))
+
+
 module.exports = app;
 
 
