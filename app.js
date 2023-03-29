@@ -12,10 +12,9 @@ app.use(express.json())
 //Controller
 
 app.use('/api/cases', require('./controllers/controller'))
+
 app.use('/api/status', require('./controllers/controller'))
 
-
-// app.use('/api/status/:id', require('./controllers/controller'))
 
 module.exports = app;
 

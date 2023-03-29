@@ -6,6 +6,7 @@ const {Schema} = mongoose;
 const caseSchema = new Schema({
  email: {type: String, lowercase: true},
  subject:{ type: String},
+
  message: { type: String},
  status: {type: String},
  comments: [{
