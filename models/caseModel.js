@@ -1,4 +1,5 @@
 const Case = require('../schema/caseSchema');
+// const Status = require('../schema/statusSchema');
 
 
 
@@ -16,7 +17,7 @@ return
 }
 
 
-Case.create({email, subject, message, status, comments})
+Case.create({email, subject, message, status})
 
 .then(data => res.status(201).json(data))
 .catch(()=> res.status(500).json({message: ' hej och hå'}))
@@ -24,10 +25,11 @@ Case.create({email, subject, message, status, comments})
 }
 
 
-exports.getCases = (req, res) => {
-    Case.find()
+
+exports.getCases =  (req, res) => {
+    Case.find().populate('status', )
     .then(data => res.status(200).json(data))
-    .catch(()=> res.status(500).json({message: ' hej och då'}))  
+    .catch(()=> res.status(500).json({message: ' kunde inte hämta cases'}))  
 }
 
 
@@ -39,10 +41,28 @@ exports.getOneCase = (req, res)=> {
   .catch(()=> res.status(500).json({message: ' something went wrong'}))
 }
 
-exports.getStatus = (req, res) => {
-    Case.find()
-    .then(data => res.status(200).json(data))
-    .catch(()=> res.status(500).json({message: ' something went wrong fetching status'}))  
+// exports.getStatus = (req, res) => {
+//     Case.find()
+//     .then(data => res.status(200).json(data))
+//     .catch(()=> res.status(500).json({message: ' something went wrong fetching status'}))  
+// }
+
+
+
+
+// exports.getStatus = async (req, res) => {
+//     const status  = await Status.find().populate('status')
+//     res.status(200).json(status)
+
+// }
+
+exports.changeStatus = async (req, res)=> {
+    const status = await Case.findByIdAndUpdate(req.params.id, {status: req.body.statusId}, {new: true})
+    if(!status){
+        return res.status(404).json({
+            message: "could not change the post"
+        })
+       }
+    res.status(200).json(status)
+
 }
-
-

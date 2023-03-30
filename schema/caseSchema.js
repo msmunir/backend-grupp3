@@ -8,7 +8,7 @@ const caseSchema = new Schema({
  subject:{ type: String},
 
  message: { type: String},
- status: {type: String},
+ status: {type: Number, ref: 'Status', default: 1} ,
  comments: [{
     type: mongoose.Schema.Types.ObjectId,
     // ref: comments
