@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const {Schema} = mongoose;
 
 const commentSchema = mongoose.Schema({
-    comments: {type: String}
+    Comments: {type: String}
 })
 
 
