@@ -29,7 +29,7 @@ Case.create({email, subject, message, status})
 
 
 exports.getCases =  (req, res) => {
-    Case.find().populate('status', )
+    Case.find().populate('status', ).populate('comment')
     .then(data => res.status(200).json(data))
     .catch(()=> res.status(500).json({message: ' kunde inte hämta cases'}))  
 }
@@ -38,14 +38,16 @@ exports.getCases =  (req, res) => {
 exports.getOneCase = (req, res)=> {
   Case.findOne({
     _id:req.params.id
-  })
+  }.populate("comment").populate("status"))
   .then(data => {res.status(200).json(data)})
   .catch(()=> res.status(500).json({message: ' something went wrong'}))
 }
 
 
 exports.changeStatus = async (req, res)=> {
-    const status = await Case.findByIdAndUpdate(req.params.id, {status: req.body.statusId}, {new: true})
+
+const status = await Case.findByIdAndUpdate(req.params.id, {status: req.body.statusId}, {new: true})
+ status.populate(status)
     if(!status){
         return res.status(404).json({
             message: "could not change the post"
