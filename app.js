@@ -11,9 +11,11 @@ app.use(express.json())
 
 //Controller
 
-app.use('/api/cases', require('./controllers/controller'))
+app.use('/api/cases', require('./controllers/caseController'))
 
-app.use('/api/status', require('./controllers/controller'))
+app.use('/api/comments', require('./controllers/commentController.js'))
+
+app.use('/api/statuses', require('./controllers/statusController'))
 
 
 module.exports = app;

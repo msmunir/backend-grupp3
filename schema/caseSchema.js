@@ -10,9 +10,7 @@ const caseSchema = new Schema({
  message: { type: String},
  status: {type: Number, ref: 'Status', default: 1} ,
  comments: [{
-    type: mongoose.Schema.Types.ObjectId,
-    // ref: comments
- }]
+    type: mongoose.Schema.Types.ObjectId,ref: "comment"}],
  
 }, {
     timestamps: true
