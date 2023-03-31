@@ -4,9 +4,11 @@ const Case = require('../schema/caseSchema');
 
 
 
+// SKAPA
+
 exports.addNewCase = (req, res) => {
 
-    const {email, subject, message, status, comments} = req.body;
+    const {email, subject, message, status, } = req.body;
 
     if(!email || !subject || !message ){
 
@@ -41,20 +43,6 @@ exports.getOneCase = (req, res)=> {
   .catch(()=> res.status(500).json({message: ' something went wrong'}))
 }
 
-// exports.getStatus = (req, res) => {
-//     Case.find()
-//     .then(data => res.status(200).json(data))
-//     .catch(()=> res.status(500).json({message: ' something went wrong fetching status'}))  
-// }
-
-
-
-
-// exports.getStatus = async (req, res) => {
-//     const status  = await Status.find().populate('status')
-//     res.status(200).json(status)
-
-// }
 
 exports.changeStatus = async (req, res)=> {
     const status = await Case.findByIdAndUpdate(req.params.id, {status: req.body.statusId}, {new: true})
