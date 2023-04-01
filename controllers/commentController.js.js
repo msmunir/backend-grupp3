@@ -2,7 +2,7 @@ const router = require("express").Router()
 
 const {addComment} = require("../models/commentModel")
 
-router.post("/", addComment)
+router.put("/:id", addComment)
 
 
 module.exports = router;

@@ -6,6 +6,6 @@ status: { type: String}
 })
 
 
-const Status = mongoose.model('Status', statusSchema)
+const Status = mongoose.model('status', statusSchema)
 
 module.exports = Status;

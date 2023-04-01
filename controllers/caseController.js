@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const {addNewCase, getCases, getOneCase,  changeStatus} = require('../models/caseModel.js')
+const {addNewCase, getCases, getOneCaseId,  changeStatus} = require('../models/caseModel.js')
 
 
 
@@ -11,7 +11,7 @@ router.post('/', addNewCase);
 
 router.get('/', getCases)
 
-router.get('/:id', getOneCase) // här kan du hämta status ockås
+router.get('/:id', getOneCaseId) // här kan du hämta status ockås
 
 router.put('/:id', changeStatus)
 // router.get('/statuses/:id', getUpdateStatus)
