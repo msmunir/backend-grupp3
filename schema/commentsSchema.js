@@ -1,10 +1,12 @@
 const mongoose = require('mongoose')
 
-const {Schema} = mongoose;
 
-const commentSchema = mongoose.Schema({
-    comments: {type: String}
+
+const commentSchema = new mongoose.Schema({
+    caseId: {type: mongoose.Schema.Types.ObjectId, ref: "Case"},
+    email:{ type: String},
+    message:{type: String,}
 })
 
 
-module.exports = mongoose.model('Comment', commentSchema)
+module.exports = mongoose.model("comment", commentSchema)
