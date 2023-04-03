@@ -21,14 +21,28 @@ Case.create({email, subject, message})
 }
 
 
- // hämta cases 
+ // hämta senaste cases 
 
-exports.getCases =  (req, res) => {
-    Case.find().populate('comments').populate('status')
-    .then((data) => {res.status(200).json(data)})
-    .catch((err)=> {res.status(500).json({message: ' kunde inte hämta cases', err: err.message});
-}) ;
-};
+ exports.getCases = (req, res) => {
+    Case.find()
+      .populate('comments')
+      .populate('status')
+      .sort({ updatedAt: -1 }) 
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((err) => {
+        res.status(500).json({ message: 'kunde inte hämta cases', err: err.message });
+      });
+  };
+  
+
+// exports.getCases =  (req, res) => {
+//     Case.find().populate('comments').populate('status')
+//     .then((data) => {res.status(200).json(data)})
+//     .catch((err)=> {res.status(500).json({message: ' kunde inte hämta cases', err: err.message});
+// }) ;
+// };
 
 // här heämtar vi ett case med id 
 
