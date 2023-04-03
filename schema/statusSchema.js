@@ -9,3 +9,4 @@ status: { type: String}
 const Status = mongoose.model('status', statusSchema)
 
 module.exports = Status;
+
